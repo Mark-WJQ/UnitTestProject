@@ -20,12 +20,13 @@
         <maven.compiler.target>8</maven.compiler.target>
         <spock.version>2.2-M1-groovy-4.0</spock.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.1.210</h2.version>
         <mockito.version>4.4.0</mockito.version>
         <junit5.version>5.8.2</junit5.version>
         <mybatis-spring-boot-starter.version>2.2.2</mybatis-spring-boot-starter.version>
         <spring-boot.version>2.5.12</spring-boot.version>
         <mybatis-spring.version>2.0.6</mybatis-spring.version>
+        <spock-subjects-collaborators-extension.version>1.2.2</spock-subjects-collaborators-extension.version>
     </properties>
 
     <dependencyManagement>
@@ -69,6 +70,14 @@
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis-spring</artifactId>
                 <version>${mybatis-spring.version}</version>
+            </dependency>
+
+            <!--spock ioc注入-->
+            <dependency>
+                <groupId>com.blogspot.toomuchcoding</groupId>
+                <artifactId>spock-subjects-collaborators-extension</artifactId>
+                <version>${spock-subjects-collaborators-extension.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

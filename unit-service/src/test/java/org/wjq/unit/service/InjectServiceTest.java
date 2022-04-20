@@ -25,6 +25,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -61,6 +62,7 @@ class InjectServiceTest {
                     return it.getId() == city.getId() && it.getName().equals(city.getName());
                 }));
 
+
     }
 
     /**
@@ -89,4 +91,14 @@ class InjectServiceTest {
                 Arguments.of(Lists.newArrayList(new Sku(1L, "1"), new Sku(2L, "2")), 2L, new City(2L, "上海"))
         );
     }
+
+
+
+    @Test
+    void testException(){
+        doThrow(new RuntimeException("测试异常")).when(cityService).getCity(101L);
+        RuntimeException runtimeException = Assertions.assertThrows(RuntimeException.class,() -> injectService.querySkuByCityId(101L));
+        Assertions.assertEquals("测试异常",runtimeException.getMessage());
+    }
+
 }

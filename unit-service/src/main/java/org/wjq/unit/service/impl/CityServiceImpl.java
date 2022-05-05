@@ -28,7 +28,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City getCityWithCopy(long cityId) {
-        City city = cityDao.selectById(cityId);
+        City city = getCity(cityId);
         City r = new City();
         r.setId(city.getId());
         r.setName(city.getName());
@@ -36,7 +36,5 @@ public class CityServiceImpl implements CityService {
         r.setCtime(city.getCtime());
         r.setUtime(city.getUtime());
         return r;
-
-
     }
 }

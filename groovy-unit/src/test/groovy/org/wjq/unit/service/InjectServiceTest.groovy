@@ -44,6 +44,12 @@ class InjectServiceTest extends Specification {
         City city = new City();
         city.setId(cityId);
         cityService.getCity(cityId) >> city
+        cityService.getCity(101) >> city
+
+        //cityService.getCity(cityId) >>> [city,city]
+        //cityService.getCity(cityId) >>> [city,city]
+
+
         when:
         injectService.calCitySku(cityId);
         then:
